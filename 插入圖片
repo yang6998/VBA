@@ -1,0 +1,11 @@
+Sub 按鈕1_Click()
+Dim p As Picture                                                                '宣告p(Picture)是一個變數
+ Set p = ActiveSheet.Pictures.Insert(ThisWorkbook.Path & "\圖片\" & "1.png")    '插入本檔案所在之處有個叫做圖片的資料夾中叫做1.png的圖片
+ p.ShapeRange.LockAspectRatio = msoFalse                                        '插入的圖片與儲存格大小相同
+    With Range("A2")                                                            '插入圖片在指定的儲存格A2
+     p.Top = Selection.Top                                                      '照片的左上方在工作表上的位置
+     p.Left = Selection.Left                                                    '照片的右方在工作表上的位置
+     p.Height = Selection.Height                                                '照片的高度=儲存格的高度
+     p.Width = Selection.Width                                                  '照片的寬度=儲存格的寬度
+    End With
+End Sub
