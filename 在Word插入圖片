@@ -1,0 +1,17 @@
+Private Sub CommandButton1_Click()
+Dim FolderPath As String
+a = Array("1", "3", "3", "3", "3")
+b = Array("1", "1", "2", "3", "4")
+For c = 0 To 4
+d = a(c)
+f = b(c)
+Selection.Tables(1).AutoFitBehavior (wdAutoFitFixed)
+   With ActiveDocument.Tables(1).Cell(d, f)
+   .Range.InlineShapes.AddPicture FileName:=ActiveDocument.Path & "\" & c & ".jpg", LinkToFile:=False, SaveWithDocument:=True
+   .Range.InlineShapes(1).Height = .Height
+   .Range.InlineShapes(1).Width = .Width
+   End With
+Next
+Selection.Tables(1).AutoFitBehavior (wdAutoFitContent)
+MsgBox "成功插入圖片"
+End Sub
