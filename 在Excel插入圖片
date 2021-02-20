@@ -1,0 +1,17 @@
+Sub 插入圖片()
+Dim a As Picture                                                        '宣告p(Picture)是一個變數
+Worksheets("Sheet1").Activate                                           '指定作業位置在Sheet1
+b = Array("A4", "A6", "E6", "I6", "M6", "A8", "E8", "I8", "M8")         '指定作業位置
+For d = 0 To 8
+c = b(d)
+Range(c).Activate
+    Set a = ActiveSheet.Pictures.Insert(ThisWorkbook.Path & "\" & d & ".jpg") '插入本檔案所在之處有個叫做圖片的資料夾中叫做1.jpg的圖片
+        a.ShapeRange.LockAspectRatio = msoFalse                                 '插入的圖片與儲存格大小相同
+        With Selection                                                          '插入圖片在指定的儲存格
+        a.Top = Selection.Top                                                   '照片的左上方在工作表上的位置
+        a.Left = Selection.Left                                                 '照片的右方在工作表上的位置
+        a.Height = Selection.Height                                             '照片的高度=儲存格的高度
+        a.Width = Selection.Width                                               '照片的寬度=儲存格的寬度
+    End With
+Next
+End Sub
